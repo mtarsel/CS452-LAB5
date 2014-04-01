@@ -198,8 +198,29 @@ static void init ()
     glutDisplayFunc (display); 
     glutReshapeFunc (reshape);
     glutTimerFunc (TIMER, timer, 0);
-    
-    mainMenu = glutCreateMenu (cbMainMenu);
+
+    int value;
+   
+    GLfloat black[4] = {0., 0., 0., 0.};
+
+
+    if (value == 99) {
+        exit (0);
+    }
+
+    if (value < USE_ALPHA_TEST)
+        tmMode = value;
+
+        glEnable (GL_TEXTURE_2D);
+        glLightfv (GL_LIGHT1, GL_SPECULAR, white);
+#ifdef GL_HP_texture_lighting
+        glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_LIGHTING_MODE_HP,
+GL_TEXTURE_POST_SPECULAR_HP);
+#endif /* GL_HP_texture_lighting */
+
+
+ 
+//    mainMenu = glutCreateMenu (cbMainMenu);
     glutAddMenuEntry ("No texture mapping", TMMODE_NONE);
     glutAddMenuEntry ("Single pass", TMMODE_SINGLE);
     glutAddMenuEntry ("Two pass", TMMODE_TWOPASS);
