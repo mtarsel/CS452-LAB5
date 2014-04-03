@@ -44,7 +44,6 @@ void reshape(int w, int h)
     glMatrixMode(GL_MODELVIEW);
 }
 
-
 static void timer (int value)
 {
     xrot += 1.f;
@@ -85,7 +84,7 @@ static void init ()
     glDisable (GL_DITHER);
     glEnable (GL_DEPTH_TEST);
 
-    /* Set up alpha test to toss 0 alpha */
+    /* Set up alpha test */
     glAlphaFunc (GL_NOTEQUAL, 0);
     
     /* Set up texture coord generation */
@@ -102,7 +101,7 @@ static void init ()
     /* prepare to use two texture objects */
     glGenTextures (2, textures);
     
-    /* init first texture object, a red & black checkerboard */
+    /* init first texture object and make the red & black checkerboard */
     glBindTexture (GL_TEXTURE_2D, textures[0]);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -117,7 +116,6 @@ static void init ()
         free (pixels);
     }
     
-    /* Leave first texture bound */
     glBindTexture (GL_TEXTURE_2D, textures[0]);
 
     myQuad = gluNewQuadric ();
